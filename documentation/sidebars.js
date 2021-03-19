@@ -50,6 +50,16 @@ module.exports = {
           'persistence/mongoose/serialization',
         ],
       },
+      {
+        type: 'category',
+        label: 'Typegoose',
+        items: [
+          'persistence/typegoose/getting-started',
+          'persistence/typegoose/relations',
+          'persistence/typegoose/custom-service',
+          'persistence/typegoose/serialization',
+        ],
+      },
     ],
     GraphQL: [
       'graphql/getting-started',
@@ -68,6 +78,7 @@ module.exports = {
     ],
     Utilities: ['utilities/query-helpers'],
     'Migration Guides': [
+      'migration-guides/v0.23.x-to-v0.24.x',
       'migration-guides/v0.22.x-to-v0.23.x',
       'migration-guides/v0.15.x-to-v0.16.x',
       'migration-guides/v0.14.x-to-v0.15.x',
@@ -77,4 +88,4 @@ module.exports = {
       'migration-guides/v0.5.x-to-v0.6.x',
     ],
   },
-};
+}

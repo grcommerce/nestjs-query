@@ -12,7 +12,7 @@ npm i @nestjs-query/core @nestjs/common class-transformer
 ## @nestjs-query/query-graphql
 
 ```sh
-npm i @nestjs-query/query-graphql @nestjs/common @nestjs/graphql graphql graphql-relay graphql-subscriptions class-transformer class-validator dataloader
+npm i @nestjs-query/query-graphql @nestjs/common @nestjs/graphql graphql graphql-subscriptions class-transformer class-validator dataloader
 ```
 
 **NOTE** `@nestjs-query/query-graphql` has opted for peer dependencies to follow nest conventions and to prevent duplicate installations of packages.
@@ -40,3 +40,11 @@ npm i @nestjs-query/query-mongoose @nestjs/common @nestjs/mongoose mongoose mong
 ```
 
 **NOTE** `@nestjs-query/query-mongoose` has opted for peer dependencies to follow nest conventions and to prevent duplicate installations of packages.
+
+## @nestjs-query/query-typegoose
+
+```sh
+npm i @nestjs-query/query-typegoose @nestjs/common @typegoose/typegoose nestjs-typegoose mongoose mongodb
+```
+
+**NOTE** `@nestjs-query/query-typegoose` has opted for peer dependencies to follow nest conventions and to prevent duplicate installations of packages.

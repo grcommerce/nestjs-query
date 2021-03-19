@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.4](https://github.com/doug-martin/nestjs-query/compare/v0.24.3...v0.24.4) (2021-03-18)
+
+**Note:** Version bump only for package @nestjs-query/query-sequelize
+
+
+
+
+
+# [0.24.0](https://github.com/doug-martin/nestjs-query/compare/v0.23.1...v0.24.0) (2021-03-15)
+
+**Note:** Version bump only for package @nestjs-query/query-sequelize
+
+
+
+
+
 # [0.23.0](https://github.com/doug-martin/nestjs-query/compare/v0.22.0...v0.23.0) (2021-02-26)
 
 **Note:** Version bump only for package @nestjs-query/query-sequelize

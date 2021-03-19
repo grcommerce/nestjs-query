@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.4](https://github.com/doug-martin/nestjs-query/compare/v0.24.3...v0.24.4) (2021-03-18)
+
+**Note:** Version bump only for package @nestjs-query/query-typeorm
+
+
+
+
+
+## [0.24.1](https://github.com/doug-martin/nestjs-query/compare/v0.24.0...v0.24.1) (2021-03-16)
+
+
+### Bug Fixes
+
+* **typeorm, #954:** Filtering on relations with pagination  ([#977](https://github.com/doug-martin/nestjs-query/issues/977)) ([f5a6374](https://github.com/doug-martin/nestjs-query/commit/f5a6374f6e22470f63ef6257f7271c818ed09321)), closes [#954](https://github.com/doug-martin/nestjs-query/issues/954) [#954](https://github.com/doug-martin/nestjs-query/issues/954) [#954](https://github.com/doug-martin/nestjs-query/issues/954) [#954](https://github.com/doug-martin/nestjs-query/issues/954)
+
+
+
+
+
+# [0.24.0](https://github.com/doug-martin/nestjs-query/compare/v0.23.1...v0.24.0) (2021-03-15)
+
+
+### Features
+
+* **typegoose:** Add typegoose package ([#846](https://github.com/doug-martin/nestjs-query/issues/846)) ([73cf5cd](https://github.com/doug-martin/nestjs-query/commit/73cf5cdbf11496ad3a3ce3f6bb69975510de26e2))
+
+
+
+
+
 ## [0.23.1](https://github.com/doug-martin/nestjs-query/compare/v0.23.0...v0.23.1) (2021-02-26)
 
 

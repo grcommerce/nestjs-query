@@ -31,9 +31,11 @@ Nestjs-query is composed of multiple packages
 * [`@nestjs-query/query-typeorm`](https://github.com/doug-martin/nestjs-query/tree/master/packages/query-typeorm) - Package that implements a Typeorm service that can be used by itself or with the graphql resolver provided by `@nestjs-query/query-graphql`.
 * [`@nestjs-query/query-sequelize`](https://github.com/doug-martin/nestjs-query/tree/master/packages/query-sequelize) - Package that implements a Sequelize service that can be used by itself or with the graphql resolver provided by `@nestjs-query/query-graphql`.
 * [`@nestjs-query/query-mongoose`](https://github.com/doug-martin/nestjs-query/tree/master/packages/query-mongoose) - Package that implements a Mongoose service that can be used by itself or with the graphql resolver provided by `@nestjs-query/query-graphql`.
+* [`@nestjs-query/query-typegoose`](https://github.com/doug-martin/nestjs-query/tree/master/packages/query-typegoose) - Package that implements a Typegoose service that can be used by itself or with the graphql resolver provided by `@nestjs-query/query-graphql`.
 
 ## Migration Guides
 
+* [`v0.23.x` to `v0.24.x`](../migration-guides/v0.23.x-to-v0.24.x.mdx)
 * [`v0.22.x` to `v0.23.x`](../migration-guides/v0.22.x-to-v0.23.x.mdx)
 * [`v0.15.x` to `v0.16.x`](../migration-guides/v0.15.x-to-v0.16.x.mdx)
 * [`v0.14.x` to `v0.15.x`](../migration-guides/v0.14.x-to-v0.15.x.mdx)
