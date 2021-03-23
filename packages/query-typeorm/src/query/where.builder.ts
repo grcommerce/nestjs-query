@@ -1,4 +1,4 @@
-import { Brackets, WhereExpression } from 'typeorm';
+import { Brackets, DefaultNamingStrategy, NamingStrategyInterface, WhereExpression } from 'typeorm';
 import { Filter, FilterComparisons, FilterFieldComparison } from '@nestjs-query/core';
 import { EntityComparisonField, SQLComparisonBuilder } from './sql-comparison.builder';
 
@@ -7,7 +7,14 @@ import { EntityComparisonField, SQLComparisonBuilder } from './sql-comparison.bu
  * Builds a WHERE clause from a Filter.
  */
 export class WhereBuilder<Entity> {
+  namingStrategy?: NamingStrategyInterface;
+
   constructor(readonly sqlComparisonBuilder: SQLComparisonBuilder<Entity> = new SQLComparisonBuilder<Entity>()) {}
+
+  setNamingStrategy(namingStrategy: NamingStrategyInterface = new DefaultNamingStrategy()) {
+    this.namingStrategy = namingStrategy;
+    this.sqlComparisonBuilder.namingStrategy = namingStrategy;
+  }
 
   /**
    * Builds a WHERE clause from a Filter.
@@ -45,7 +52,7 @@ export class WhereBuilder<Entity> {
     alias?: string,
   ): Where {
     return where.andWhere(
-      new Brackets((qb) => filters.reduce((w, f) => qb.andWhere(this.createBrackets(f, relationNames, alias)), qb)),
+      new Brackets(qb => filters.reduce((w, f) => qb.andWhere(this.createBrackets(f, relationNames, alias)), qb)),
     );
   }
 
@@ -63,7 +70,7 @@ export class WhereBuilder<Entity> {
     alias?: string,
   ): Where {
     return where.andWhere(
-      new Brackets((qb) => filter.reduce((w, f) => qb.orWhere(this.createBrackets(f, relationNames, alias)), qb)),
+      new Brackets(qb => filter.reduce((w, f) => qb.orWhere(this.createBrackets(f, relationNames, alias)), qb)),
     );
   }
 
@@ -77,7 +84,7 @@ export class WhereBuilder<Entity> {
    * @param alias - optional alias to use to qualify an identifier
    */
   private createBrackets(filter: Filter<Entity>, relationNames: string[], alias?: string): Brackets {
-    return new Brackets((qb) => this.build(qb, filter, relationNames, alias));
+    return new Brackets(qb => this.build(qb, filter, relationNames, alias));
   }
 
   /**
@@ -124,9 +131,9 @@ export class WhereBuilder<Entity> {
       return this.withRelationFilter(where, field, cmp as Filter<Entity[T]>);
     }
     return where.andWhere(
-      new Brackets((qb) => {
+      new Brackets(qb => {
         const opts = Object.keys(cmp) as (keyof FilterFieldComparison<Entity[T]>)[];
-        const sqlComparisons = opts.map((cmpType) =>
+        const sqlComparisons = opts.map(cmpType =>
           this.sqlComparisonBuilder.build(field, cmpType, cmp[cmpType] as EntityComparisonField<Entity, T>, alias),
         );
         sqlComparisons.map(({ sql, params }) => qb.orWhere(sql, params));
@@ -140,8 +147,9 @@ export class WhereBuilder<Entity> {
     cmp: Filter<Entity[T]>,
   ): Where {
     return where.andWhere(
-      new Brackets((qb) => {
+      new Brackets(qb => {
         const relationWhere = new WhereBuilder<Entity[T]>();
+        relationWhere.setNamingStrategy(this.namingStrategy);
         // for now ignore relations of relations.
         return relationWhere.build(qb, cmp, [], field as string);
       }),

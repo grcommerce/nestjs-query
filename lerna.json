@@ -1,8 +1,8 @@
 {
   "tagVersionPrefix": "v",
   "packages": [
-    "examples",
-    "packages/*"
+    "packages/query-graphql",
+    "packages/query-typeorm"
   ],
   "command": {
     "version": {

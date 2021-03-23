@@ -18,9 +18,12 @@
     "access": "public"
   },
   "dependencies": {
+    "@grcommerce/query-graphql": "^0.24.4",
+    "@grcommerce/query-typeorm": "^0.24.4",
     "@nestjs-query/core": "0.24.4",
     "lodash.escaperegexp": "^4.1.2",
     "lodash.merge": "^4.6.2",
+    "rimraf": "^3.0.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -52,7 +55,7 @@
     "prepublishOnly": "npm run build",
     "prebuild": "npm run clean",
     "build": "tsc -p tsconfig.json",
-    "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo"
+    "clean": "rimraf ./dist && rimraf tsconfig.tsbuildinfo"
   },
   "bugs": {
     "url": "https://github.com/doug-martin/nestjs-query/issues"

@@ -1,12 +1,51 @@
 {
-  "name": "@nestjs-query/core",
-  "version": "0.24.4",
+  "_from": "@nestjs-query/core@0.24.4",
+  "_id": "@nestjs-query/core@0.24.4",
+  "_inBundle": false,
+  "_integrity": "sha512-LxPOb039GAhX3eR3xIyNoI8pK9/kir3h1ALJWO0BDzbTedkJzpyrzQjN5LKXl54w7fyx7QTxgK06EsX4MaBxcA==",
+  "_location": "/@nestjs-query/core",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@nestjs-query/core@0.24.4",
+    "name": "@nestjs-query/core",
+    "escapedName": "@nestjs-query%2fcore",
+    "scope": "@nestjs-query",
+    "rawSpec": "0.24.4",
+    "saveSpec": null,
+    "fetchSpec": "0.24.4"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@nestjs-query/core/-/core-0.24.4.tgz",
+  "_shasum": "bf7ba2103c6e4091585680e7b37bbe8aa83d8af5",
+  "_spec": "@nestjs-query/core@0.24.4",
+  "_where": "D:\\Workspace\\grcommerce\\libraries\\nestjs-query",
+  "author": {
+    "name": "doug-martin",
+    "email": "doug@dougamartin.com"
+  },
+  "bugs": {
+    "url": "https://github.com/doug-martin/nestjs-query/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "lodash.merge": "^4.6.2",
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^2.1.0"
+  },
+  "deprecated": false,
   "description": "Base query package",
-  "author": "doug-martin <doug@dougamartin.com>",
-  "homepage": "https://github.com/doug-martin/nestjs-query#readme",
-  "license": "MIT",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "devDependencies": {
+    "@nestjs/common": "7.6.14",
+    "@nestjs/testing": "7.6.14",
+    "@types/lodash.merge": "4.6.6",
+    "class-transformer": "0.3.1",
+    "ts-mockito": "2.6.1",
+    "typescript": "4.2.3"
+  },
   "directories": {
     "lib": "dist/src",
     "test": "__tests__"
@@ -14,6 +53,15 @@
   "files": [
     "dist/src/**"
   ],
+  "gitHead": "30729cac228eee4131d4f9e21da5504c95f3083e",
+  "homepage": "https://github.com/doug-martin/nestjs-query#readme",
+  "license": "MIT",
+  "main": "dist/src/index.js",
+  "name": "@nestjs-query/core",
+  "peerDependencies": {
+    "@nestjs/common": "^7.0.0",
+    "class-transformer": "^0.2.3 || 0.3.1"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -22,29 +70,11 @@
     "url": "git+https://github.com/doug-martin/nestjs-query.git"
   },
   "scripts": {
-    "prepublishOnly": "npm run build",
-    "prebuild": "npm run clean",
     "build": "tsc",
-    "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo"
+    "clean": "rimraf ./dist && rimraf tsconfig.tsbuildinfo",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build"
   },
-  "bugs": {
-    "url": "https://github.com/doug-martin/nestjs-query/issues"
-  },
-  "dependencies": {
-    "lodash.merge": "^4.6.2",
-    "reflect-metadata": "^0.1.13",
-    "tslib": "^2.1.0"
-  },
-  "peerDependencies": {
-    "@nestjs/common": "^7.0.0",
-    "class-transformer": "^0.2.3 || 0.3.1"
-  },
-  "devDependencies": {
-    "@nestjs/common": "7.6.14",
-    "@nestjs/testing": "7.6.14",
-    "@types/lodash.merge": "4.6.6",
-    "class-transformer": "0.3.1",
-    "ts-mockito": "2.6.1",
-    "typescript": "4.2.3"
-  }
+  "types": "dist/src/index.d.ts",
+  "version": "0.24.4"
 }

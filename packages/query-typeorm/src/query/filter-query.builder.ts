@@ -1,15 +1,15 @@
-import { Filter, Paging, Query, SortField, getFilterFields, AggregateQuery } from '@nestjs-query/core';
+import { Filter, Paging, Query, SortField, getFilterFields, AggregateQuery } from "@nestjs-query/core";
 import {
   DeleteQueryBuilder,
   QueryBuilder,
   Repository,
   SelectQueryBuilder,
   UpdateQueryBuilder,
-  WhereExpression,
-} from 'typeorm';
-import { SoftDeleteQueryBuilder } from 'typeorm/query-builder/SoftDeleteQueryBuilder';
-import { AggregateBuilder } from './aggregate.builder';
-import { WhereBuilder } from './where.builder';
+  WhereExpression
+} from "typeorm";
+import { SoftDeleteQueryBuilder } from "typeorm/query-builder/SoftDeleteQueryBuilder";
+import { AggregateBuilder } from "./aggregate.builder";
+import { WhereBuilder } from "./where.builder";
 
 /**
  * @internal
@@ -17,7 +17,7 @@ import { WhereBuilder } from './where.builder';
  * Interface that for Typeorm query builders that are sortable.
  */
 interface Sortable<Entity> extends QueryBuilder<Entity> {
-  addOrderBy(sort: string, order?: 'ASC' | 'DESC', nulls?: 'NULLS FIRST' | 'NULLS LAST'): this;
+  addOrderBy(sort: string, order?: "ASC" | "DESC", nulls?: "NULLS FIRST" | "NULLS LAST"): this;
 }
 
 /**
@@ -27,8 +27,11 @@ interface Sortable<Entity> extends QueryBuilder<Entity> {
  */
 interface Pageable<Entity> extends QueryBuilder<Entity> {
   limit(limit?: number): this;
+
   offset(offset?: number): this;
+
   skip(skip?: number): this;
+
   take(take?: number): this;
 }
 
@@ -41,8 +44,10 @@ export class FilterQueryBuilder<Entity> {
   constructor(
     readonly repo: Repository<Entity>,
     readonly whereBuilder: WhereBuilder<Entity> = new WhereBuilder<Entity>(),
-    readonly aggregateBuilder: AggregateBuilder<Entity> = new AggregateBuilder<Entity>(),
-  ) {}
+    readonly aggregateBuilder: AggregateBuilder<Entity> = new AggregateBuilder<Entity>()
+  ) {
+    whereBuilder.setNamingStrategy(repo.manager?.connection?.options?.namingStrategy);
+  }
 
   /**
    * Create a `typeorm` SelectQueryBuilder with `WHERE`, `ORDER BY` and `LIMIT/OFFSET` clauses.
@@ -94,7 +99,7 @@ export class FilterQueryBuilder<Entity> {
   softDelete(query: Query<Entity>): SoftDeleteQueryBuilder<Entity> {
     return this.applyFilter(
       this.repo.createQueryBuilder().softDelete() as SoftDeleteQueryBuilder<Entity>,
-      query.filter,
+      query.filter
     );
   }
 

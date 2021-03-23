@@ -1,27 +1,29 @@
-import { Class, Filter, Query, SortField } from '@nestjs-query/core';
-import { ArgsType, Field } from '@nestjs/graphql';
-import { ValidateNested, Validate } from 'class-validator';
-import { Type } from 'class-transformer';
-import { PropertyMax } from '../../validators/property-max.validator';
-import { DEFAULT_QUERY_OPTS } from './constants';
-import { CursorQueryArgsTypeOpts, QueryType, StaticQueryType } from './interfaces';
-import { PagingStrategies, getOrCreateCursorPagingType, CursorPagingType } from '../paging';
-import { FilterType } from '../filter.type';
-import { getOrCreateSortType } from '../sorting.type';
-import { getOrCreateCursorConnectionType } from '../../connection';
+import { Class, Filter, SortField } from "@nestjs-query/core";
+import { ArgsType, Field } from "@nestjs/graphql";
+import { Validate, ValidateNested } from "class-validator";
+import { Type } from "class-transformer";
+import { PropertyMax } from "../../validators/property-max.validator";
+import { DEFAULT_QUERY_OPTS } from "./constants";
+import { CursorQueryArgsTypeOpts, QueryType } from "./interfaces";
+import { CursorPagingType, getOrCreateCursorPagingType, PagingStrategies } from "../paging";
+import { FilterType } from "../filter.type";
+import { getOrCreateSortType } from "../sorting.type";
+import { getOrCreateCursorConnectionType } from "../../connection";
+import { ShopifyCursorQueryArgs, StaticShopifyCursorQueryType } from "../../../shopify-adapter/shopify.types";
 
 export type CursorQueryArgsType<DTO> = QueryType<DTO, PagingStrategies.CURSOR>;
 export function createCursorQueryArgsType<DTO>(
   DTOClass: Class<DTO>,
   opts: CursorQueryArgsTypeOpts<DTO> = { ...DEFAULT_QUERY_OPTS, pagingStrategy: PagingStrategies.CURSOR },
-): StaticQueryType<DTO, PagingStrategies.CURSOR> {
+): StaticShopifyCursorQueryType<DTO, PagingStrategies.CURSOR> {
+
   const F = FilterType(DTOClass);
   const S = getOrCreateSortType(DTOClass);
   const P = getOrCreateCursorPagingType();
   const C = getOrCreateCursorConnectionType(DTOClass, opts);
 
   @ArgsType()
-  class QueryArgs implements Query<DTO> {
+  class QueryArgs extends ShopifyCursorQueryArgs(DTOClass, opts) {
     static SortType = S;
 
     static FilterType = F;
@@ -57,5 +59,6 @@ export function createCursorQueryArgsType<DTO>(
     @Type(() => S)
     sorting?: SortField<DTO>[];
   }
+
   return QueryArgs;
 }

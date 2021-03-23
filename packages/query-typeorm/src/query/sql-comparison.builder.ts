@@ -1,5 +1,5 @@
 import { CommonFieldComparisonBetweenType, FilterComparisonOperators } from '@nestjs-query/core';
-import { ObjectLiteral } from 'typeorm';
+import { DefaultNamingStrategy, NamingStrategyInterface, ObjectLiteral } from 'typeorm';
 
 import { randomString } from '../common';
 
@@ -37,7 +37,14 @@ export class SQLComparisonBuilder<Entity> {
     notilike: 'NOT ILIKE',
   };
 
+  namingStrategy?: NamingStrategyInterface = new DefaultNamingStrategy();
+
   constructor(readonly comparisonMap: Record<string, string> = SQLComparisonBuilder.DEFAULT_COMPARISON_MAP) {}
+
+  getFieldNaming(field: string): string {
+    let namedField = this.namingStrategy ? this.namingStrategy.columnName(field, undefined, []) : field;
+    return namedField;
+  }
 
   private get paramName(): string {
     const id = randomString();
@@ -59,6 +66,7 @@ export class SQLComparisonBuilder<Entity> {
     val: EntityComparisonField<Entity, F>,
     alias?: string,
   ): CmpSQLType {
+    field = this.getFieldNaming(field as any) as any;
     const col = alias ? `${alias}.${field as string}` : `${field as string}`;
     const normalizedCmp = (cmp as string).toLowerCase();
     if (this.comparisonMap[normalizedCmp]) {

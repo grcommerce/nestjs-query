@@ -54,3 +54,4 @@ export {
   BeforeFindOneHook,
 } from './hooks';
 export { AuthorizerInterceptor, AuthorizerContext, HookInterceptor, HookContext } from './interceptors';
+export * from './shopify-adapter';
